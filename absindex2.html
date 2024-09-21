@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banking Website</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2, h3 {
+      margin: 0;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      width: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    header h1 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    /* Navigation Styles */
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      background-color: #e6f2ff;
+    }
+    nav a {
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    /* Container Styles */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Forms Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input[type="text"], input[type="password"], input[type="email"], input[type="file"] {
+      padding: 15px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+      border-color: #004080;
+    }
+    input[type="submit"] {
+      background-color: #004080;
+      color: white;
+      font-size: 18px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #00264d;
+    }
+
+    /* Dashboard Styles */
+    .dashboard {
+      text-align: center;
+    }
+    .dashboard h2 {
+      color: #004080;
+    }
+    .card {
+      background-color: #e6f7ff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid #004080;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+    
+    /* Additional Features Styles */
+    .quick-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .quick-actions div {
+      background-color: #e6f7ff;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      width: 30%;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .quick-actions div:hover {
+      transform: scale(1.05);
+    }
+    .quick-actions h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if(username === "user" && password === "password123") {
+        document.getElementById("home-page").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("user-name").innerText = username;
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+    
+    function transferMoney() {
+      const amount = document.getElementById("transfer-amount").value;
+      const fromAccount = document.getElementById("from-account").value;
+      const toAccount = document.getElementById("to-account").value;
+      alert(`Transferred ${amount} from ${fromAccount} to ${toAccount}`);
+    }
+    
+    function payBill() {
+      const payee = document.getElementById("payee-name").value;
+      const amount = document.getElementById("bill-amount").value;
+      alert(`Paid ${amount} to ${payee}`);
+    }
+    
+    function depositCheck() {
+      const checkAmount = document.getElementById("check-amount").value;
+      alert(`Deposited a check of $${checkAmount}`);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="download.png" alt="Bank Logo">
+    <h1>Varun Bank <a
+      href="#"
+      class="badge bg-primary"
+      >New!</a
+    >
+    </h1>
+  </header>
+  
+  <!-- Navigation -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQs</a>
+  </nav>
+  
+  <!-- Home Page -->
+  <div id="home-page" class="container">
+    <h2>Login to Your Account</h2>
+    <form onsubmit="login(); return false;">
+      <input type="text" id="username" placeholder="Enter Username" required>
+      <input type="password" id="password" placeholder="Enter Password" required>
+      <input type="submit" value="Login">
+    </form>
+    <p><a href="#">Forgot Password?</a> | <a href="#">Enroll in Online Banking</a></p>
+    <p>Call us: 1-800-123-4567 | Hours: Mon-Fri 9 AM - 5 PM</p>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="container" style="display:none;">
+    <div class="dashboard">
+      <h2>Welcome, <span id="user-name"></span></h2>
+      <div class="card">
+        <h3>Account Balances</h3>
+        <p>Checking: $2,500.00</p>
+        <p>Savings: $10,000.00</p>
+      </div>
+      
+      <div class="card">
+        <h3>Alerts</h3>
+        <p>Low Balance Warning: Your savings account has less than $100.</p>
+        <p>Upcoming Bill: Water bill due in 5 days.</p>
+      </div>
+
+      <h3>Quick Actions</h3>
+      <div class="quick-actions">
+        <div>
+          <h3>Transfer Money</h3>
+          <form onsubmit="transferMoney(); return false;">
+            <input type="text" id="transfer-amount" placeholder="Enter Amount" required>
+            <input type="text" id="from-account" placeholder="From Account" required>
+            <input type="text" id="to-account" placeholder="To Account" required>
+            <input type="submit" value="Transfer">
+          </form>
+        </div>
+
+        <div>
+          <h3>Pay Bills</h3>
+          <form onsubmit="payBill(); return false;">
+            <input type="text" id="payee-name" placeholder="Enter Payee Name" required>
+            <input type="text" id="bill-amount" placeholder="Enter Amount" required>
+            <input type="submit" value="Pay Bill">
+          </form>
+        </div>
+
+        <div>
+          <h3>Deposit Checks</h3>
+          <form onsubmit="depositCheck(); return false;">
+            <input type="text" id="check-amount" placeholder="Enter Check Amount" required>
+            <input type="file" id="check-image" required>
+            <input type="submit" value="Deposit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Varun Bank. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
